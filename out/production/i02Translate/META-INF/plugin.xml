@@ -1,0 +1,44 @@
+<idea-plugin>
+  <id>win.i02.plugin</id>
+  <name>TranslateByGoogle</name>
+  <version>1.0</version>
+  <vendor email="qi.doyle@gmail.com" url="http://www.i02.win">赵宇麒</vendor>
+
+  <description><![CDATA[
+      1、改自<em>https://github.com/PingerOne/A8Translate</em> 的翻译插件<br>
+      主要针对注释翻译，去除注释的*号，和html标签<br>
+      使用google api翻译<br>
+      热键alt+e
+      2、字符串Unicode编码，热键shift+q
+    ]]></description>
+
+  <change-notes><![CDATA[
+
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="145.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+
+  -->
+  <depends>com.intellij.modules.lang</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action class="win.i02.TranslateAction" id="Translate">
+      <keyboard-shortcut keymap="$default" first-keystroke="alt e"/>
+    </action>
+    <action class="win.i02.StringToUnicodeAction" id="StringToUnicode">
+      <keyboard-shortcut keymap="$default" first-keystroke="shift q"/>
+    </action>
+  </actions>
+
+</idea-plugin>
