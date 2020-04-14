@@ -48,7 +48,7 @@ public class TranslationBean{
     /**
      * 取错误信息
      */
-    private String getErrorMessage() {
+    public String getErrorMessage() {
         switch (errorCode) {
             case SUCCESS:
                 return "成功";
@@ -71,7 +71,7 @@ public class TranslationBean{
     /**
      * 获取不同语言的翻译内容
      */
-    private String getPhonetic() {
+    public String getPhonetic() {
         if (basic == null) {
             return null;
         }
@@ -100,7 +100,7 @@ public class TranslationBean{
     /**
      * 获取翻译
      */
-    private String getExplains() {
+    public String getExplains() {
         if (basic == null) {
             return null;
         }
@@ -118,7 +118,7 @@ public class TranslationBean{
     /**
      * 获取直接的翻译结果
      */
-    private String getTranslationResult() {
+    public String getTranslationResult() {
         if (translation == null) {
             return null;
         }
@@ -141,7 +141,7 @@ public class TranslationBean{
     /**
      * 获取网络翻译结果
      */
-    private String getWebResult() {
+    public String getWebResult() {
         if (web == null) {
             return null;
         }
@@ -170,7 +170,7 @@ public class TranslationBean{
         return result;
     }
 
-    private boolean isSentence() {
+    public boolean isSentence() {
         return query==null||query.trim().contains(" ");
     }
 

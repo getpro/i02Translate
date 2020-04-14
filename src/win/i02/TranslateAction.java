@@ -10,9 +10,8 @@ import com.intellij.openapi.ui.popup.Balloon;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.ui.JBColor;
 import org.apache.http.util.TextUtils;
-import win.i02.bean.TranslationGoogleBean;
-import win.i02.util.HttpUtils;
-import win.i02.util.TranslateCallBack;
+import win.i02.bean.ResultBean;
+import win.i02.service.impl.TraslateFactory;
 
 import java.awt.*;
 
@@ -57,49 +56,12 @@ public class TranslateAction extends AnAction{
             return;
         }
 
-        HttpUtils.requestGoogle(selectedText, new TranslateCallBack<TranslationGoogleBean>() {
-            @Override
-            public void onSuccess(TranslationGoogleBean result) {
-                if(TextUtils.isEmpty(result.getCode())){
-                    showPopupWindow(result.toString());
-                }else{
-                    showPopupWindow(result.getCode());
-                }
-
-            }
-
-            @Override
-            public void onFailure(String message) {
-                showPopupWindow(message);
-            }
-
-            @Override
-            public void onError(String message) {
-                showPopupWindow(message);
-            }
-        });
-
-        /**
-         * 第二步 ---> API查询
-         */
-//        HttpUtils.requestData(selectedText, new TranslateCallBack<TranslationBean>() {
-//
-//            @Override
-//            public void onSuccess(TranslationBean result) {
-//                showPopupWindow(result.toString());
-//            }
-//
-//            @Override
-//            public void onFailure(String message) {
-//                showPopupWindow(message);
-//            }
-//
-//            @Override
-//            public void onError(String message) {
-//                showPopupWindow(message);
-//            }
-//        });
-
+        ResultBean bean = TraslateFactory.translate(selectedText);
+        if(bean.isSuccess()){
+            showPopupWindow(bean.getResult());
+        }else{
+            showPopupWindow(bean.getErrorMsg());
+        }
     }
 
 
