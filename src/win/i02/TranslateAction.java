@@ -74,7 +74,7 @@ public class TranslateAction extends AnAction{
         ApplicationManager.getApplication().invokeLater(() -> {
             JBPopupFactory factory = JBPopupFactory.getInstance();
             factory.createHtmlTextBalloonBuilder(result, null, new JBColor(new Color(186, 238, 186), new Color(73, 117, 73)), null)
-                    .setFadeoutTime(5000)
+                    .setFadeoutTime(60000)
                     .createBalloon()
                     .show(factory.guessBestPopupLocation(mEditor), Balloon.Position.below);
         });
